@@ -1,5 +1,5 @@
 import base64
-import json
+from json import loads
 from googleapiclient.discovery import build
 
 def process_pubsub(event, context):
@@ -9,20 +9,17 @@ def process_pubsub(event, context):
     # Decode the pubsub message
     message = base64.b64decode(event['data']).decode('utf-8')
 
-    # Print the message
+    # Print the received message
 
     print(f"Received pubsub message: {message}")
 
-    # Extract the instance name using json.loads
-    instance = json.loads(message)['Instance']
-    # Extract the project name
-    project = json.loads(message)['Project']
-    # Extract the action
-    action = json.loads(message)['Action']
+    # Extract parameters from the message
+    instance = loads(message)['Instance']
+    project = loads(message)['Project']
+    action = loads(message)['Action']
 
     print(f"Instance: {instance}")
 
-    # Create the cloudsql API client with the provided credentials
 
     service = build('sqladmin', 'v1beta4')
 

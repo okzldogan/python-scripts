@@ -11,7 +11,7 @@ def create_disk_snapshot(event, context):
     # Decode the pubsub message
     message = base64.b64decode(event['data']).decode('utf-8')
 
-    # Print the message
+    # Print the received message
     print(f"Received pubsub message: {message}")
 
     # Set the project ID from the pubsub message

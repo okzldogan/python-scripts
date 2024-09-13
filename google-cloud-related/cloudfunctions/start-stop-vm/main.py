@@ -13,13 +13,10 @@ def start_stop_vm(event, context):
     # Print the message
     print(f"Received pubsub message: {message}")
 
-    # Set the project ID from the pubsub message
+    # Extract parameters from the message
     project_id = loads(message)['Project']
-    # Set the vm name from the pubsub message
     vm_name = loads(message)['VM-Name']
-    # Set the vm name from the pubsub message
     vm_zone = loads(message)['VM-Zone']
-    # Set the action from the pubsub message
     action = loads(message)['Action']
 
     print(f"Project ID: {project_id}")
