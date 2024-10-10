@@ -63,16 +63,24 @@ class User:
 
 
         select_locations = {
-            "prod": {
-                "location": "europe-west1",
-                "location": "europe-north1"
-            },
-            "staging": {
-                "location": "europe-west1"
-            },
-            "dev": {
-                "location": "europe-west1"
-            }
+            "prod": [
+                {
+                    "location": "europe-west1"
+                },
+                {
+                    "location": "europe-north1"
+                }
+            ],
+            "staging":[
+                {
+                    "location": "europe-west1"
+                }
+            ],
+            "dev": [
+                {
+                    "location": "europe-west1"
+                }
+            ]
         }
 
         locations = select_locations[self.project_id.split("-")[2]]
@@ -85,9 +93,7 @@ class User:
                 "secret": {
                     "replication": {
                         "user_managed": {
-                            "replicas": [
-                                locations
-                            ]
+                            "replicas": locations
                         }
                     }
                 }
