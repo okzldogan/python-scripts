@@ -63,9 +63,16 @@ class User:
 
 
         select_locations = {
-            "prod": "europe-west1,europe-north1",
-            "staging": "europe-west1",
-            "dev": "europe-west1"
+            "prod": {
+                "location": "europe-west1",
+                "location": "europe-north1"
+            },
+            "staging": {
+                "location": "europe-west1"
+            },
+            "dev": {
+                "location": "europe-west1"
+            }
         }
 
         locations = select_locations[self.project_id.split("-")[2]]
@@ -79,9 +86,7 @@ class User:
                     "replication": {
                         "user_managed": {
                             "replicas": [
-                                {
-                                    "location": f"{locations}"
-                                }
+                                locations
                             ]
                         }
                     }
